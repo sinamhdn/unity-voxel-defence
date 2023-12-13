@@ -20,7 +20,7 @@ public class EnemyMove : MonoBehaviour
         // path = FindObjectsOfType<Block>().OrderBy(block => block.transform.parent).ToList<Block>();
 
         world = FindObjectOfType<World>();
-        for (int i = 0; i < world.transform.GetChildCount(); i++)
+        for (int i = 0; i < world.transform.childCount; i++)
         {
             path.Add(world.transform.GetChild(i));
         }
