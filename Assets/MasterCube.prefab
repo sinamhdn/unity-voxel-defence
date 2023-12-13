@@ -223,6 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4377710454132233917}
   - component: {fileID: 8779238628007342893}
+  - component: {fileID: 818455786989408583}
   m_Layer: 0
   m_Name: MasterCube
   m_TagString: Untagged
@@ -249,7 +250,7 @@ Transform:
   - {fileID: 6550384030368366266}
   - {fileID: 7815187732785223511}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8779238628007342893
 MonoBehaviour:
@@ -264,6 +265,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: 10
+--- !u!114 &818455786989408583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3260002460826076161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dbd4e67d84e42649b511b39dcc31776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5929501948135130944
 GameObject:
   m_ObjectHideFlags: 0
