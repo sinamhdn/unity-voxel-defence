@@ -5,7 +5,8 @@ using UnityEngine;
 public class Pathfinder : MonoBehaviour
 {
     // [SerializeField] Block startBlock, EndBlock;
-    [SerializeField] bool haltPathfinding = false;
+    bool haltPathfinding = false;
+    Block searchOrigin;
     Block startWaypoint, endWaypoint;
     World world;
     Dictionary<Vector2Int, Block> grid = new Dictionary<Vector2Int, Block>();
@@ -23,6 +24,8 @@ public class Pathfinder : MonoBehaviour
         world = FindObjectOfType<World>();
         startWaypoint = world.transform.GetChild(0).GetComponent<Block>();
         endWaypoint = world.transform.GetChild(world.transform.childCount - 1).GetComponent<Block>();
+        startWaypoint.isStartNode = true;
+        endWaypoint.isEndNode = true;
         print("START WAYPOINT ---->> " + startWaypoint.name);
         print("END WAYPOINT ---->> " + endWaypoint.name);
         LoadBlocks();
@@ -63,16 +66,16 @@ public class Pathfinder : MonoBehaviour
         queue.Enqueue(startWaypoint);
         while (queue.Count > 0 && !haltPathfinding)
         {
-            Block searchOrigin = queue.Dequeue();
+            searchOrigin = queue.Dequeue();
             print("Start seach from: " + searchOrigin + "!!!");
-            HalfIfReachedEndNode(searchOrigin);
-            LookupNeighbours(searchOrigin);
+            HalfIfReachedEndNode();
+            LookupNeighbours();
             searchOrigin.isExplored = true;
         }
         print("Pathfinding finished!!!");
     }
 
-    void HalfIfReachedEndNode(Block searchOrigin)
+    void HalfIfReachedEndNode()
     {
         if (searchOrigin == endWaypoint)
         {
@@ -82,26 +85,34 @@ public class Pathfinder : MonoBehaviour
         }
     }
 
-    void LookupNeighbours(Block fromBlock)
+    void LookupNeighbours()
     {
         if (haltPathfinding) return;
         foreach (Vector2Int direction in directions)
         {
-            Vector2Int lookupNeighbourCoordinate = fromBlock.GetSnapPosition() + direction;
+            Vector2Int lookupNeighbourCoordinate = searchOrigin.GetSnapPosition() + direction;
             try
             {
-                Block neighbour = grid[lookupNeighbourCoordinate];
-                if (!neighbour.isExplored)
-                {
-                    neighbour.SetColorOfTop(Color.cyan);
-                    queue.Enqueue(neighbour);
-                    print("Queueing " + neighbour);
-                }
+                EnqueueNewNeighbours(lookupNeighbourCoordinate);
             }
             catch
             {
                 Debug.LogError("An Error Occured.");
             }
+        }
+    }
+
+    void EnqueueNewNeighbours(Vector2Int lookupNeighbourCoordinate)
+    {
+        // if (!grid.ContainsKey(lookupNeighbourCoordinate)) continue;
+        if (!grid.ContainsKey(lookupNeighbourCoordinate)) return;
+        Block neighbour = grid[lookupNeighbourCoordinate];
+        if (!neighbour.isExplored || queue.Contains(neighbour))
+        {
+            neighbour.SetColorOfTop(Color.cyan);
+            queue.Enqueue(neighbour);
+            neighbour.exploredFrom = searchOrigin.gameObject;
+            print("Queueing " + neighbour);
         }
     }
 }
