@@ -25,8 +25,8 @@ public class EnemyMove : MonoBehaviour
             path.Add(world.transform.GetChild(i));
         }
 
-        StartCoroutine(FollowPath());
-        //InvokeRepeating("Say hello!!", 1f, 1f);
+        // StartCoroutine(FollowPath());
+        // InvokeRepeating("Say hello!!", 1f, 1f);
     }
 
     // Update is called once per frame
