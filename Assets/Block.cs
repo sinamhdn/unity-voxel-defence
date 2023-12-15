@@ -8,7 +8,7 @@ public class Block : MonoBehaviour
     public bool isEndNode = false;
     public bool isRouteNode = false;
     public bool isExplored = false;
-    public GameObject exploredFrom;
+    public Block exploredFrom;
     const int gridSize = 10;
     // Vector2Int snapPosition;
 
@@ -17,15 +17,17 @@ public class Block : MonoBehaviour
         SetRouteColor();
     }
 
-    void SetRouteColor()
+    public void SetRouteColor()
     {
         if (!material || !exploredFrom) return;
+        if (isRouteNode) SetMaterialOfTop(material);
+        FindObjectOfType<Pathfinder>().ChangeStartEndColor();
         //Block currentNode = this;
         if (isEndNode || isRouteNode)
         {
             //exploredFrom.GetComponent<Block>().SetMaterialOfTop(material);
-            SetMaterialOfTop(material);
-            exploredFrom.GetComponent<Block>().isRouteNode = true;
+            exploredFrom.isRouteNode = true;
+            // exploredFrom.GetComponent<Block>().isRouteNode = true;
         }
     }
 

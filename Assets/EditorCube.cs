@@ -38,7 +38,7 @@ public class EditorCube : MonoBehaviour
 
     private void UpdateLabel()
     {
-        int gridSize = block.GetGridSize();
+        // int gridSize = block.GetGridSize();
         TextMesh textMesh = GetComponentInChildren<TextMesh>();
         // string blockLable = snapPosition.x / gridSize + "," + snapPosition.z / gridSize;
         string blockLable = block.GetSnapPosition().x +
