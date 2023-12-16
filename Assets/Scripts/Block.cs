@@ -8,6 +8,7 @@ public class Block : MonoBehaviour
     public bool isEndNode = false;
     public bool isRouteNode = false;
     public bool isExplored = false;
+    public bool isPlaceable = true;
     public Block exploredFrom;
     const int gridSize = 10;
     // Vector2Int snapPosition;
@@ -19,7 +20,17 @@ public class Block : MonoBehaviour
 
     void OnMouseOver()
     {
-        print("OnMouseOver - " + gameObject.name);
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (isPlaceable)
+            {
+                print("OnMouseOver - " + gameObject.name);
+            }
+            else
+            {
+                print("CANT PLACE HERE!!");
+            }
+        }
     }
 
     public void SetRouteColor()

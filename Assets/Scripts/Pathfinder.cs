@@ -140,13 +140,16 @@ public class Pathfinder : MonoBehaviour
     void GenerateRoute()
     {
         route.Add(endWaypoint);
+        endWaypoint.isPlaceable = false;
         Block previous = endWaypoint.exploredFrom;
         while (previous != startWaypoint)
         {
             route.Add(previous);
+            previous.isPlaceable = false;
             previous = previous.exploredFrom;
         }
         route.Add(startWaypoint);
+        startWaypoint.isPlaceable = false;
         route.Reverse();
     }
 
