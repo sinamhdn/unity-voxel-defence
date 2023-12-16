@@ -6,6 +6,8 @@ public class EnemyMove : MonoBehaviour
 {
     // [SerializeField] List<Block> path;
     // List<Block> path;
+    [SerializeField] float minSpawnTime = 1f;
+    [SerializeField] float maxSpawnTime = 2f;
     List<Transform> directPath;
     World world;
 
@@ -62,7 +64,7 @@ public class EnemyMove : MonoBehaviour
         foreach (var block in path)
         {
             transform.position = block.transform.position;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
         }
     }
 }

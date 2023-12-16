@@ -158,7 +158,10 @@ public class Pathfinder : MonoBehaviour
     // methods to get method
     public List<Block> GetRoute()
     {
-        StartPathfinding();
+        if (route.Count == 0)
+        {
+            StartPathfinding();
+        }
         return route;
     }
 }
