@@ -13,12 +13,13 @@ public class Turret : MonoBehaviour
     void Start()
     {
         turretTop = transform.GetChild(0);
-        target = FindObjectOfType<Enemy>().transform;
         projectile = GetComponentInChildren<ParticleSystem>();
+        // target = FindObjectOfType<Enemy>().transform;
     }
 
     void Update()
     {
+        FindTarget();
         if (target)
         {
             turretTop.LookAt(target);
@@ -28,6 +29,26 @@ public class Turret : MonoBehaviour
         {
             Shoot(false);
         }
+    }
+
+    void FindTarget()
+    {
+        var sceneEnemies = FindObjectsOfType<Enemy>();
+        if (sceneEnemies.Length == 0) return;
+        Transform closeEnemy = sceneEnemies[0].transform;
+        foreach (Enemy enemy in sceneEnemies)
+        {
+            closeEnemy = FindClosestEnemy(closeEnemy, enemy.transform);
+        }
+        target = closeEnemy;
+    }
+
+    Transform FindClosestEnemy(Transform transform0, Transform transform1)
+    {
+        var disstTo0 = Vector3.Distance(transform.position, transform0.position);
+        var disstTo1 = Vector3.Distance(transform.position, transform1.position);
+        if (disstTo0 < disstTo1) return transform0;
+        return transform1;
     }
 
     void Fire()

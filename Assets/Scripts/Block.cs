@@ -17,6 +17,11 @@ public class Block : MonoBehaviour
         SetRouteColor();
     }
 
+    void OnMouseOver()
+    {
+        print("OnMouseOver - " + gameObject.name);
+    }
+
     public void SetRouteColor()
     {
         if (!material || !exploredFrom) return;
