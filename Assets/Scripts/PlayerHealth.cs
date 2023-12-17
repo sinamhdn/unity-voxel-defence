@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
     {
         GetComponent<AudioSource>().PlayOneShot(hitSFX);
         health -= damageTake;
+        if (health < 0) health = 0;
         healthText.text = health.ToString();
     }
 }

@@ -304,10 +304,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitParticle: {fileID: 7523111480797661564}
   deathParticle: {fileID: 198537984209914932, guid: 1a51bfda454239a41afb7dee687c6ac0, type: 3}
-  hitPoints: 20
+  hitPoints: 10
   particlesHit: 0
-  hitSFX: {fileID: 0}
-  deathSFX: {fileID: 0}
+  hitSFX: {fileID: 8300000, guid: a05d3a8888497384b99f6196c65abf16, type: 3}
+  deathSFX: {fileID: 8300000, guid: e76d713db384d5a4eb4a8ce025f059b2, type: 3}
 --- !u!114 &1883094821166687605
 MonoBehaviour:
   m_ObjectHideFlags: 0
