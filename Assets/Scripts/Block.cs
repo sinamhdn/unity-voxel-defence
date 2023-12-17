@@ -3,7 +3,7 @@ using UnityEngine;
 // allowed to have public variables because this class just holds data
 public class Block : MonoBehaviour
 {
-    [SerializeField] Turret turretPrefab;
+    // [SerializeField] Turret turretPrefab;
     [SerializeField] Material material;
     public bool isStartNode = false;
     public bool isEndNode = false;
@@ -25,8 +25,9 @@ public class Block : MonoBehaviour
         {
             if (isPlaceable)
             {
-                Instantiate(turretPrefab, transform.position, Quaternion.identity);
-                isPlaceable = false;
+                // Instantiate(turretPrefab, transform.position, Quaternion.identity);
+                // isPlaceable = false;
+                FindObjectOfType<TurretSpawner>().SpawnTurret(this);
                 print("OnMouseOver - " + gameObject.name);
             }
             else
