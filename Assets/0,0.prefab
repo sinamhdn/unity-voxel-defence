@@ -278,11 +278,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dbd4e67d84e42649b511b39dcc31776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretPrefab: {fileID: 2934046303121133118, guid: ee7cce4318579824787c064bfab00f1c, type: 3}
   material: {fileID: 2100000, guid: b4b288b3612dc0f45a2a21264fd230d7, type: 2}
   isStartNode: 0
   isEndNode: 0
   isRouteNode: 0
   isExplored: 0
+  isPlaceable: 1
   exploredFrom: {fileID: 0}
 --- !u!65 &2825653766749229356
 BoxCollider:
