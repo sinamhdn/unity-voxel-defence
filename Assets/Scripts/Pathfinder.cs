@@ -19,11 +19,6 @@ public class Pathfinder : MonoBehaviour
         Vector2Int.down,
     };
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         // tries to set route color from here

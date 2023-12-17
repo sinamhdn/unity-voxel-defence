@@ -7,11 +7,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] int hitPoints = 300;
     [SerializeField] int particlesHit = 0;
 
-    void Start()
-    {
-
-    }
-
     void OnParticleCollision(GameObject other)
     {
         // Destroy(other); // THIS WILL DESTROY THE PARTICLE SYSTEM SOURCE
@@ -37,6 +32,7 @@ public class Enemy : MonoBehaviour
     {
         var deathVFX = Instantiate(deathParticle, transform.position, Quaternion.identity);
         deathVFX.Play();
+        Destroy(deathVFX.gameObject, deathVFX.main.duration);
         Destroy(gameObject);
     }
 }

@@ -6,6 +6,7 @@ public class Turret : MonoBehaviour
     // [SerializeField] Transform targetOBJ;
     // [SerializeField] ParticleSystem projectile;
     [SerializeField] float attackRange = 30f;
+    public Block baseBlock; // block that the turret stands on
     ParticleSystem projectile;
     Transform turretTop;
     Transform target;
