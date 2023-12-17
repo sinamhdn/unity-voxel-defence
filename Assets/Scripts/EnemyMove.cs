@@ -8,6 +8,7 @@ public class EnemyMove : MonoBehaviour
     // List<Block> path;
     [SerializeField] float minSpawnTime = 1f;
     [SerializeField] float maxSpawnTime = 2f;
+    [SerializeField] ParticleSystem gameEndParticle;
     List<Transform> directPath;
     World world;
 
@@ -49,6 +50,14 @@ public class EnemyMove : MonoBehaviour
         // InvokeRepeating("Say hello!!", 1f, 1f);
     }
 
+    void SelfDestruct()
+    {
+        var deathVFX = Instantiate(gameEndParticle, transform.position + new Vector3(0f, 5f, 0f), Quaternion.identity);
+        deathVFX.Play();
+        Destroy(deathVFX.gameObject, deathVFX.main.duration);
+        Destroy(gameObject);
+    }
+
     IEnumerator FollowDPath()
     {
         foreach (var block in directPath)
@@ -66,5 +75,6 @@ public class EnemyMove : MonoBehaviour
             transform.position = block.transform.position;
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
         }
+        SelfDestruct();
     }
 }

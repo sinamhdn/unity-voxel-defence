@@ -173,8 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ffa7da174157cc4abdd0946447de098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnTime: 1
-  maxSpawnTime: 2
+  minSpawnTime: 0.5
+  maxSpawnTime: 1
+  gameEndParticle: {fileID: 198537984209914932, guid: 4a98e749969eb6348ab482bbef1e8504, type: 3}
 --- !u!54 &8331276119116476003
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -359,19 +360,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198098995208406150, guid: dcf9cd10c07cf0c49863969befadb243, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198554004130006392, guid: dcf9cd10c07cf0c49863969befadb243, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198801791596541968, guid: dcf9cd10c07cf0c49863969befadb243, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198997797312625902, guid: dcf9cd10c07cf0c49863969befadb243, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 199193145506810086, guid: dcf9cd10c07cf0c49863969befadb243, type: 3}
       propertyPath: m_Materials.Array.size

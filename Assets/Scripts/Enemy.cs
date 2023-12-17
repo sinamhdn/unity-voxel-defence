@@ -10,10 +10,10 @@ public class Enemy : MonoBehaviour
     void OnParticleCollision(GameObject other)
     {
         // Destroy(other); // THIS WILL DESTROY THE PARTICLE SYSTEM SOURCE
-        getHit();
+        GetHit();
         if (hitPoints <= 0)
         {
-            getKilled();
+            GetKilled();
         }
         else
         {
@@ -22,15 +22,15 @@ public class Enemy : MonoBehaviour
 
     }
 
-    void getHit()
+    void GetHit()
     {
         hitPoints = hitPoints - 1;
         hitParticle.Play();
     }
 
-    void getKilled()
+    void GetKilled()
     {
-        var deathVFX = Instantiate(deathParticle, transform.position, Quaternion.identity);
+        var deathVFX = Instantiate(deathParticle, transform.position + new Vector3(0f, 5f, 0f), Quaternion.identity);
         deathVFX.Play();
         Destroy(deathVFX.gameObject, deathVFX.main.duration);
         Destroy(gameObject);
